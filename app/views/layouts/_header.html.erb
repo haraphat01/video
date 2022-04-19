@@ -1,13 +1,39 @@
-<% if current_user %>
-      <%= link_to current_user.email, edit_user_registration_path %>
-      <%= button_to "Log out", destroy_user_session_path, method: :delete %>
-      <% else %>
-      <%= link_to "Log in", new_user_session_path %>
-      <%= link_to "Register", new_user_registration_path %>
-      <% end %> 
-
-
-
-  <%=link_to "Home", root_path%>
-   <%=link_to "Privacy", privacy_path%>
-    <%=link_to "Terms", terms_path%>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <i class="fas fa-flag"></i>
+      Brand
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <%= link_to root_path, class: "nav-link #{'active fw-bold' if current_page?(root_path)}" do %>
+          <div class="fa fa-home"></div>
+          Home
+        <% end %>
+         <%= link_to privacy_path, class: "nav-link #{'active fw-bold' if current_page?(privacy_path)}" do %>
+          <div class="fa fa-home"></div>
+          Privacy
+        <% end %>
+         <%= link_to terms_path, class: "nav-link #{'active fw-bold' if current_page?(terms_path)}" do %>
+          <div class="fa fa-home"></div>
+          Terms
+        <% end %>
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <% if current_user %>
+          <li class="nav-item ">
+              <%= link_to current_user.email, edit_user_registration_path %>
+            
+                <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+        
+        <% else %>
+          <%= link_to "Log in", new_user_session_path, class: "nav-link #{'active fw-bold' if current_page?(new_user_session_path)}" %>
+          <%= link_to "Sign up", new_user_registration_path, class: "nav-link #{'active fw-bold' if current_page?(new_user_registration_path)}" %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
