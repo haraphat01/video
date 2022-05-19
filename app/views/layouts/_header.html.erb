@@ -9,15 +9,19 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
-        <%= link_to root_path, class: "nav-link #{'active fw-bold' if current_page?(root_path)}" do %>
+        <%= deep_active_link_to root_path do %>
           <div class="fa fa-home"></div>
           Home
         <% end %>
-         <%= link_to privacy_path, class: "nav-link #{'active fw-bold' if current_page?(privacy_path)}" do %>
+        <%= deep_active_link_to users_path do %>
+          <div class="fa fa-home"></div>
+          Users
+        <% end %>
+         <%= deep_active_link_to privacy_path do %>
           <div class="fa fa-home"></div>
           Privacy
         <% end %>
-         <%= link_to terms_path, class: "nav-link #{'active fw-bold' if current_page?(terms_path)}" do %>
+         <%= deep_active_link_to terms_path do %>
           <div class="fa fa-home"></div>
           Terms
         <% end %>
